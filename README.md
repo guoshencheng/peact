@@ -1,9 +1,9 @@
-# Peact
+# peact
 
 ### A Library to manager and do operation with pixi game object
 
 ### TODO:
-[ ] render pixi game object from object liket;
+- [ ] render pixi game object from object like:
 ```javascript
 
 {
