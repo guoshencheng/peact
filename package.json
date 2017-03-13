@@ -1,0 +1,23 @@
+{
+  "name": "peact",
+  "version": "1.0.0",
+  "description": "A Library to manager and do operation with pixi game object",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoshencheng/Peact.git"
+  },
+  "keywords": [
+    "pixi",
+    "render"
+  ],
+  "author": "guoshencheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guoshencheng/Peact/issues"
+  },
+  "homepage": "https://github.com/guoshencheng/Peact#readme"
+}
