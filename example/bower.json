@@ -1,0 +1,13 @@
+{
+  "name": "example",
+  "homepage": "https://github.com/guoshencheng/peact",
+  "authors": [
+    "guoshencheng <648772021@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "pixi.js": "pixi#^4.4.2"
+  }
+}
