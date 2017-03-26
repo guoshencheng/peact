@@ -2,20 +2,29 @@
  * Created by guoshencheng on 18/03/2017.
  */
 
-var PIXI = require('pixi');
-
 import { Component, CreateElement, Render } from '../../lib';
 
 class CustomItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      scale: 0.3
+    }
   }
+
   render() {
+    var { scale } = this.state;
+    var onClickItem = () => {
+      this.setState({
+        scale: 0.4
+      })
+    }
     var textures = PIXI.Texture.fromImage('/example/assets/logo.png');
     var props = Object.assign({
-      "scale.x": 0.3,
-      "scale.y": 0.3,
+      "scale.x": scale,
+      "scale.y": scale,
       textures,
+      onClick: onClickItem
     }, this.props);
     return CreateElement('Sprite', props, null)
   }
