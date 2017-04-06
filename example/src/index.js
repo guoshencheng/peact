@@ -2,7 +2,9 @@
  * Created by guoshencheng on 18/03/2017.
  */
 
-import { Component, CreateElement, Render } from '../../lib';
+import CreateElement from '../../lib/CreateElement';
+import { Component, Render } from '../../lib';
+import React from 'react';
 
 class CustomItem extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class CustomItem extends Component {
       textures,
       onClick: onClickItem
     }, this.props);
-    return CreateElement('Sprite', props, null)
+    return CreateElement('Sprite', props)
   }
 }
 
@@ -45,13 +47,17 @@ class Fighter extends Component {
       y: 200,
       textures,
     }, this.props);
-    return CreateElement('AnimatedSprite', props, null)
+    return CreateElement('AnimatedSprite', props)
   }
 }
 
 class CustomContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      x: 12,
+      y: 12,
+    }
   }
 
   buildItems() {
@@ -61,16 +67,28 @@ class CustomContainer extends Component {
         x: 20,
         y: value * 150
       }
-      return CreateElement(CustomItem, props, null);
+      return CreateElement(CustomItem, props);
     })
   }
 
   render() {
-    var props = { x: 12, y: 12 };
-    return CreateElement('Container', props, [
-      CreateElement("Container", null, this.buildItems()),
+    var click = () => {
+      this.setState({
+        x: 0, y: 0
+      })
+    };
+    var props = {
+      x: this.state.x,
+      y: this.state.y,
+      onClick: click,
+      children: [
+      CreateElement("Container", {
+        children: this.buildItems()
+      }),
       CreateElement(Fighter)
-    ]);
+      ]
+    };
+    return CreateElement('Container', props);
   }
 }
 
@@ -80,6 +98,19 @@ var app = new PIXI.Application(640, 1136, {
   view: canvas
 });
 
+let a = (<a></a>)
+
+class Hello extends React.Component {
+  render() {
+    return (
+      <h1>
+        {a}
+        <div> hello </div>
+      </h1>
+    )
+  }
+}
+console.log((<Hello name="guoshencheng" />), a);
 
 PIXI.loader.add('/example/assets/logo.png').add('/example/assets/fighter.json').load(() => {
   Render(CreateElement(CustomContainer, null, null), app);
